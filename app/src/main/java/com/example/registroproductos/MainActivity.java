@@ -1,16 +1,13 @@
 package com.example.registroproductos;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.net.URI;
-import java.text.BreakIterator;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.registroproductos.Controllers.ControllerDatos;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         cantidad = findViewById(R.id.cantidad);
         precio = findViewById(R.id.precio);
 
+        //producto
+
+
         //registro de eventos
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
                 int ElemPrecio = precio.getText().length();
 
 
+                ControllerDatos enviar = new ControllerDatos();
+                enviar.insertar(ElemNombre, ElemDescripcion, ElemCategoria, ElemCantidad, ElemPrecio);
 
                 //alerta con los datos
-                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                /*AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("data: "+ElemNombre+"");
                 AlertDialog alertDialog = alert.create();
-                alertDialog.show();
+                alertDialog.show();*/
 
             }
         });
